@@ -1,0 +1,20 @@
+{
+  "name": "Soen-341",
+  "version": "1.0.0",
+  "description": "Develop a web application to display silly pictures (memes) and allow interaction between users (Memestagram).",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./server/node_modules/mocha/bin/mocha ./tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gregtuc/Soen-341.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gregtuc/Soen-341/issues"
+  },
+  "homepage": "https://github.com/gregtuc/Soen-341#readme"
+}

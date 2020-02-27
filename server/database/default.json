@@ -1,0 +1,3 @@
+{
+  "ConnectionUrl": "mongodb+srv://username:password@cluster0-pf0b2.mongodb.net/memestagram?retryWrites=true&w=majority"
+}

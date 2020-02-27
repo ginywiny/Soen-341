@@ -14,14 +14,19 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /*background-color: #282c34;*/
+  background-image: url(./windowsbackground.jpg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+}
+
+.Windows-background {
+  background-image: url(./windowsbackground.jpg);
 }
 
 .App-link {
@@ -35,4 +40,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+h1 {
+  color: #111;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 100px;
+  font-weight: bold;
+  text-decoration: underline;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
 }
