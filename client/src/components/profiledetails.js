@@ -106,7 +106,7 @@ class AccountDetails extends Component {
         </Container>
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Post a new meme</Modal.Title>
+            <Modal.Title>Update user biography</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form onSubmit={this.onFormSubmit}>
