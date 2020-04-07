@@ -7,20 +7,27 @@ import {
   Card,
   Button,
   InputGroup,
-  FormControl
+  FormControl,
+  FormFile,
+  Form,
+  Modal
 } from "react-bootstrap";
+import "../App.css"
 
-class RenderProfilePictures extends Component {
+class RenderPictures extends Component {
   constructor(props) {
     super(props);
+    this.onDeleteButton = this.onDeleteButton.bind(this);
+
     this.state = {
-      img: []
+      img: [],
+      show: false
     };
   }
 
   componentDidMount() {
     axios
-      .get("http://localhost:8000/files", {
+      .get("http://localhost:8000/files/", {
         headers: { token: sessionStorage.getItem("jwt") }
       })
       .then(res => {
@@ -30,7 +37,8 @@ class RenderProfilePictures extends Component {
         for (var i = 0; i < res.data.length; i++) {
           arr.push({
             image: res.data[i].filename,
-            description: res.data[i].description
+            description: res.data[i].description,
+            photoid: res.data[i]._id
           });
         }
         //Fill this.state.img with the array from the for loop.
@@ -40,11 +48,30 @@ class RenderProfilePictures extends Component {
       });
   }
 
+  onDeleteButton(photoid, index) {
+
+    this.setState({...this.state.img[index], description: ''}); //resetting the description of the image at this index
+
+    axios
+      .delete("http://localhost:8000/files/" + photoid, {
+        headers: {token: sessionStorage.getItem("jwt")}
+      })
+      .then(res => {
+      })
+      .catch(error => {
+        console.log(error);
+      });     
+      setTimeout(()=>{alert("Image Deleted"); window.location.reload(true);}, 2000);
+      //window.location.reload(true);
+
+    }
+  
+
   render() {
     return (
       <Container>
         <Row>
-          {this.state.img.map(item => {
+          {this.state.img.map((item, index) => {
             return (
               <Col>
                 <Card
@@ -60,6 +87,7 @@ class RenderProfilePictures extends Component {
                   />
                   <Card.Body>
                     <Card.Title>{item.description}</Card.Title>
+                    <br></br>
                     <Card.Text>This will be the comment section</Card.Text>
                     <InputGroup size="sm" className="mb-3">
                       <InputGroup.Prepend></InputGroup.Prepend>
@@ -69,7 +97,10 @@ class RenderProfilePictures extends Component {
                         placeholder="Leave a comment"
                       />
                     </InputGroup>
-                    <Button variant="primary">Post comment</Button>
+                    <Button variant="primary float-left">Post comment</Button>
+                    <Form>
+                      <Button onClick = {() => {this.onDeleteButton(item.photoid, index)}} className = "btn btn-danger btn-sm float-right">Delete</Button>
+                    </Form>
                   </Card.Body>
                 </Card>
               </Col>
@@ -81,4 +112,4 @@ class RenderProfilePictures extends Component {
   }
 }
 
-export default RenderProfilePictures;
+export default RenderPictures;

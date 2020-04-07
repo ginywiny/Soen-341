@@ -145,7 +145,8 @@ app.get("/files", auth, async (req, res) => {
 // @route GET /files
 // @desc Display all files for a REQUESTED user in JSON
 app.post("/searchuser/files", auth, async (req, res) => {
-  try {
+    try {
+        console.log(req.body);
     //Search for all files stored by the requesting user.
     const user = await User.findOne({ username: req.body.username });
     let objectIdArray = user.posts.photoid.map(s => mongoose.Types.ObjectId(s));
@@ -241,12 +242,13 @@ app.get("/", (req, res) => {
   });
 });
 
-app.delete("/files/:id", (req, res) => {
-  gfs.remove({ _id: req.params.id, root: "uploads" }, (err, gridStore) => {
+app.delete("/files/:_id", (req, res) => {
+  gfs.remove({ _id: req.params._id, root: "uploads" }, (err, gridStore) => {
     if (err) {
       return res.status(404).json({ err: err });
     }
   });
+  res.redirect('/');
 });
 
 module.exports = server;

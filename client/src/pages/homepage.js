@@ -1,5 +1,31 @@
 import React, { Component } from "react";
 import Navbar from "../components/navbar";
+import ShowHomePictures from "../components/displayHomepage";
+import "../App.css";
+
+class HomePage extends Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                <Navbar />
+                <ShowHomePictures />
+            </div>
+        );
+    }
+}
+
+export default HomePage;
+
+
+
+
+/*
+ * 
+ * import React, { Component } from "react";
+import Navbar from "../components/navbar";
 import auth from "../authentication/auth-login";
 import { Redirect } from "react-router-dom";
 
@@ -186,11 +212,11 @@ class HomePage extends Component {
   //             }}
   //           />
   //         </li>
-  //       ))} */}
+  //       ))} *///}
   //         </Col>
   //       </Row>
   //     </Container>
-
+/*
   async getUploadedPictures() {
     // const res = await Axios
     // .get('http://localhost:8000/api/uploadedImage/authenticated', {
@@ -253,3 +279,4 @@ class HomePage extends Component {
 }
 
 export default HomePage;
+*/

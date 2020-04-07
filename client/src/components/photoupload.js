@@ -3,6 +3,7 @@ import axios from "axios";
 import "../App.css";
 import { Button, Modal, Form } from "react-bootstrap";
 
+
 class RenderProfilePage extends Component {
   constructor(props) {
     super(props);
@@ -33,6 +34,7 @@ class RenderProfilePage extends Component {
   onFormSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
+    
     formData.append("myImage", this.state.file);
     formData.append("myDescription", this.state.description);
 
@@ -45,11 +47,14 @@ class RenderProfilePage extends Component {
       })
       .then(res => {
         alert("The file was successfully uploaded");
+        console.log("wait");
+        window.location.reload(true);
       })
       .catch(error => {
         console.log(error);
       });
   }
+
   onChange(e) {
     this.setState({ file: e.target.files[0] });
   }
