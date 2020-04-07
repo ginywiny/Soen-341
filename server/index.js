@@ -73,6 +73,9 @@ app.use("/api/follow", followuser);
 var updatebio = require("./routes/updateBio");
 app.use("/api/updatebio", updatebio);
 
+var comments = require("./routes/commentsImage");
+app.use("/api/comments", comments);
+
 //Listen on Port 8000
 const port = process.env.PORT || 8000;
 

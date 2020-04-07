@@ -129,12 +129,6 @@ router.post('/', upload.single('uploadedImage'), async (req, res, next) => {    
         uploadedImage: req.file.path,
     })
     uploadedImage.save()
-    //---------------------------Bad code------------------------------------------
-    // var uploadedImage = new UploadedImage;
-    // uploadedImage.imgTest.data = fs.readFileSync(req.uploadedImage.path)
-    // uploadedImage.imgTest.contentType = 'image/jpeg';
-    // uploadedImage.save()
-    //----------------------------------------------------------------------------
     .then(result => {
         console.log(result);
         res.status(201).json({

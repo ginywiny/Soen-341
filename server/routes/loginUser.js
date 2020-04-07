@@ -48,6 +48,7 @@ router.post("/", async (req, res) => {
         throw err;
       }
       res.status(200).json({ token });
+      console.log("Token: " + token);
     });
     //If any error happens, send back status 500.
   } catch (err) {
